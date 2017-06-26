@@ -46,7 +46,9 @@ Part of our summer research will involve reading and discussing some scientific 
 | TBD   | [Neutrality tests for sequences with missing data](https://doi.org/10.1534/genetics.112.139949) | Alan | SFS-based statistical estimators for incomplete genetic data |
 | TBD   | [Optimal neutrality tests based on the frequency spectrum](https://doi.org/10.1534/genetics.110.118570) | Alan | Finding optimal neutrality tests against a chosen alternative evolutionary hypothesis |
 | TBD   | [Fundamental limits on the accuracy of demographic inference based on the sample frequency spectrum](https://doi.org/10.1073/pnas.1503717112) | Alan | Information-theoretic error bound on distance between population growth function and its estimator, and slow convergence of estimators |
-
+| TBD   | [nextflu: real-time tracking of seasonal influenza
+virus evolution in humans] (https://academic.oup.com/bioinformatics/article-lookup/doi/10.1093/bioinformatics/btv381) | Rayne | |
+| TBD   | [Allele dynamics plots for the study of evolutionary dynamics in viral populations] (https://academic.oup.com/nar/article-lookup/doi/10.1093/nar/gkq909) | Rayne | |
 Put yourself on the calendar like this:
 ```
 | May 16   | [paper](https://...) | Julia | A very interesting paper |
