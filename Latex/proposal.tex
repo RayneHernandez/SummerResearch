@@ -1,0 +1,53 @@
+\documentclass[10pt, oneside]{article}   	
+\usepackage{geometry}                		
+                 		
+
+\usepackage[utf8]{inputenc}               		
+    		
+\usepackage{graphicx}				
+										
+\usepackage{amssymb}
+\usepackage{authblk}
+
+
+
+\title{Research Proposal: Forecasting Effective Population Size Trajectories of Influenza Viruses from Phylogenetic Trees}
+\author[1]{RAYNE HERNANDEZ}
+\affil[ ]{Stanford University}
+\renewcommand\Authands{, }
+\date{}							
+
+\begin{document}
+\maketitle
+
+\section{Specific Aims}
+
+In this project we are looking at phylogenetic trees of influenza virus strains in an attempt to infer demographic information inherent in these phylogentic trees and to forecast future trends in virus strain demographics. In short, we want to further develop a model for inferring the effective population size trajectories of virus strains in the past and forecasting effective population size trajectories in the future. In doing so we want to consider regression methods that can be used to model effective population size and improve upon the Gaussian Process regression method already developed. We also want to consider whether or not incorporating other sources of information would result better population trajectory estimates. 
+
+We want this model to be robust, able to handle phylogenetic trees that are multifurcating. For this purpose we want to our method to be able to convert mutifurcating trees into bifurcating trees so that we can apply our estimating method. 
+
+\section{Background and Significance}
+
+The CDC's flu surveillance system plays an integral role in implementing public health interventions in response to epidemic outbreaks. Methods like nucleic acid sequencing based amplifications have made detection faster and more responsive. However the system can still lag behind real-time flu activity because of high mutation rates resulting in antigenic drift\cite{wang_2017}. Consequently public health officials cannot always intervene in the most effective manner possible. This is where influenza virus strain forecasting comes into play. Effective and accurate forecasting of influenza virus activity can serve as a timely tool for early detection and assessment of epidemics. It can also assist disease prevention in the production and targeted distribution of more effective flu vaccines. As a result, our project can directly assist the global effort in disease control and prevention. 
+
+This project exists within the the context of the project, NextFlu, an attempt to provide up-to-date worldwide tracking of influenza virus demographics and evolution\cite{neher_bedford_2015}. Using data pulled from the GISAID EpiFlu database, NextFlu constructs an heterochronous phylogenetic tree of flu virus strains using the FastTree \cite{price_dehal_arkin_2009} and RAxML\cite{stamatakis_2014} algorithms. This produces a tree that contains polytomies for large datasets. It also provides forecasts of mutation, genotype and clade frequency trajectories as linear interpolations of fixed pivot points through time. Since NextFlu is primarily a tool for interpreting and presenting evolution and epidemiological data to the larger public health community, it does not employ the most accurate techniques available for effective population size forecasting. 
+
+Recent developments on methods in phylodynamics inference have opened the way to estimating demographic information from sequencing data. The methods make use of coalescent theory to infer the population dynamics of a given genealogy. Working from the sampling times they infer effective population size trajectories for past dates\cite{palacios_minin_2012}. The software package Phylodyn has been developed to black box the phylodynamic procedures and makes use of an Integrated Nested Laplace Approximation (INLA) to estimate effective population size trajectories\cite{karcher_palacios_lan_minin_2016}. 
+
+\section{Research Design and Methods}
+
+The main task is forecasting effective population size trajectories in the future. The distribution for the effective population size trajectory for past times is estimated using the phylodynamics inference procedure previously mentioned. In forecasting future predictions we use a Gaussian Process regression model on the estimate for the effective population size distribution provided by a Bayesian nonparametric procedure. \cite{wang_2017}. The regression algorithm for doing so has been previously worked out and can produce estimates for an arbitrary number of future points with a corresponding confidence interval on each estimation\cite{rasmussen_williams_undefined_2008}.
+
+We want to apply this model on sequence data of the hemmagglutinin (HA) gene coming from the GISAID EpiFlu database. However we also have data coming from the CDC FluView database which provides broad level frequencies of various flu strains throughout the year. Performing exploratory data analysis on the NextFlu data, we want to consider other predictors that might be incorporated into making phylodynamic predictions. These include flu seasonality and geographic location, all of which might play a role in determining the population dynamics. We can also use the FluView data either as a testing set or to augment the training set to improve the accuracy of our regression method. Alternative methods for improving the regression method itself have not been explored or simulated. These are all open avenues of research. This model can also be applied to any arbitrary set of DNA sequences that form a bifurcating phylogenetic tree. In this sense the phylodynamics of other diseases can be modeled in the same way and perhaps used as alternative training sets to help find ways improve our methods. 
+
+A method for resolving tree polytomies produced by NextFlu should also be refined. The current method estimates a mutation rate using coalescent theory and then randomly breaks the polytomy into dichotomies and then assigns branch length based on estimated coalescent times\cite{wang_2017}. An understanding of how the polytomies are produced in the first place by FastTree and RAxML would be helpful in reducing the polytomies. If there is any difference between the sequences in a polytomy then given the mutations rate, a method not completely random is preferable. 
+
+In short there is a reasonable amount of work that can be done in applying the regression method on new data, improving the regression method and making it more robust against polytomies. The results will be an improvement to NextFlu in its forecasting ability. More broadly this will better aid the public health community in epidemic prediction and prevention. 
+
+\section{Literature Cited}
+\bibliographystyle{plain}
+\bibliography{bibliography.bib}
+
+
+
+\end{document}   
